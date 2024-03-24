@@ -1,4 +1,9 @@
-<img src="https://scrutinizer-ci.com/g/ylvali/me-api2/badges/quality-score.png?b=main" alt='quality score'><img src="https://scrutinizer-ci.com/g/ylvali/me-api2/badges/coverage.png?b=main" alt='coverage'><img src="https://scrutinizer-ci.com/g/ylvali/me-api2/badges/build.png?b=main" alt='scrutinizer'><img src="https://app.travis-ci.com/ylvali/me-api2.svg?token=zbGBcfgSpBchF7HShAt4&branch=main" alt='travis pass'>
+[![Build Status](https://app.travis-ci.com/ylvali/jsframeworkProject2024BTH.svg?token=zbGBcfgSpBchF7HShAt4&branch=main)](https://app.travis-ci.com/ylvali/jsframeworkProject2024BTH)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/?branch=main)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/?branch=main)
+
 
 # Backend Me-API 
 ## BTH Blekinge technical institute
@@ -30,22 +35,36 @@ It runs a test database when in test mode ()
 
 ## NPM commands
 "pretest": "bash start.bash",
+
 "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/**/*.js'",
+
 "start": "node app.js",
+
 "eslint": "eslint .",
+
 "clean": "rm -rf node_modules package-lock.json",
+
 "process": "pm2 start app.js --name me-api",
+
 "stopProcess": "pm2 stop app.js --name me-api",
+
 "production": "NODE_ENV='production' node app.js",
+
 "testRun": "NODE_ENV='test' node app.js"
 
 ## Available routes 
 /                   : GET test 
+
 /token              : GET token 
+
 /verifyToken        : GET verifies token & uses JWT secret x-access-token
 
 /users/allUsers     : POST Show all users 
+
 /users/register     : POST register user (email & password JSON, body)
+
 /users/allLoggedOn  : POST All logged on 
+
 /users/logOut       : POST Log out all 
+
 /users/login        : POST login user (username & password)
