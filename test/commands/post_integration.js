@@ -27,53 +27,6 @@ describe('GET /token', () => {
     });
 });
 
-// // New user every time
-// describe('POST /reports/add"', () => {
-//     it('200 HAPPY PATH', (done) => {
-//         chai.request(server)
-//             .post("/reports/add")
-//             .set('x-access-token', token)
-//             .send({title: 'test1', data1: 'test1'})
-//             .end((err, res) => {
-//                 console.log(err);
-//                 res.should.have.status(200);
-//                 res.body.should.be.an("object");
-//                 res.body.data.should.be.an("object");
-//                 // res.body.data.length.should.be.above(0);
-//                 done();
-//             });
-//     });
-// });
-
-// // Duplicate, 400 block
-// describe('POST /reports/add', () => {
-//     it('200 HAPPY PATH', (done) => {
-//         chai.request(server)
-//             .post("/reports/add")
-//             .set('x-access-token', token)
-//             .send({title: 'test1', data1: 'test1'})
-//             .end((err, res) => {
-//                 res.should.have.status(400);
-//                 done();
-//             });
-//     });
-// });
-
-// // Duplicate, 400 block
-// describe('POST /reports/edit', () => {
-//     it('200 HAPPY PATH', (done) => {
-//         chai.request(server)
-//             .post("/reports/edit")
-//             .set('x-access-token', token)
-//             .send({title: 'test123x', data1: 'data2xNew'})
-//             .end((err, res) => {
-//                 res.should.have.status(200);
-//                 res.body.should.be.an("object");
-//                 res.body.data.should.be.an("object");
-//                 done();
-//             });
-//     });
-// });
 
 // POST allUsers
 describe('POST /users/allUsers', () => {
@@ -109,7 +62,7 @@ describe('POST /users/logout', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.an("object");
-                res.body.data.should.be.an("object");
+                res.body.data.should.be.an("object"); 
                 done(); 
             });
     });
@@ -120,7 +73,7 @@ describe('POST /users/register', () => {
     it('200 HAPPY PATH', (done) => {
         chai.request(server)
             .post("/users/register")
-            .send({email: 'testS1', password: 'testS1', name: 'testS1', birthday: 'testS1'})
+            .send({email: 'testX', password: 'testX', name: 'testX', birthday: 'testX'})
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.an("object");
@@ -135,7 +88,7 @@ describe('POST /users/register', () => {
     it('200 HAPPY PATH', (done) => {
         chai.request(server)
             .post("/users/register")
-            .send({email: 'testS1', password: 'testS1', name: 'testS1', birthday: 'testS1'})
+            .send({email: 'testX', password: 'testX', name: 'testX', birthday: 'testX'})
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
@@ -160,7 +113,7 @@ describe('POST /users/login', () => {
     it('200 HAPPY PATH', (done) => {
         chai.request(server)
             .post("/users/login")
-            .send({email: 'testS1', password: 'testS1'})
+            .send({email: 'testX', password: 'testX'})
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.an("object");
@@ -175,7 +128,7 @@ describe('POST /users/login', () => {
     it('200 HAPPY PATH', (done) => {
         chai.request(server)
             .post("/users/login")
-            .send({email: 'testS1', password: 'testS1'})
+            .send({email: 'testX', password: 'testX'})
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.an("object");

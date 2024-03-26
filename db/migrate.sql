@@ -19,11 +19,23 @@ CREATE TABLE IF NOT EXISTS loggedOn (
         REFERENCES users(email)
 );
 
--- DROP TABLE IF EXISTS reports;
--- CREATE TABLE IF NOT EXISTS reports (
---     idNr INTEGER PRIMARY KEY AUTOINCREMENT,
---     time CURRENT_TIMESTAMP,
---     data VARCHAR(1500),
---     title VARCHAR(255) NOT NULL,
---     UNIQUE(title)
--- );
+DROP TABLE IF EXISTS depot;
+CREATE TABLE IF NOT EXISTS depot (
+    idNr INTEGER PRIMARY KEY AUTOINCREMENT,
+    time CURRENT_TIMESTAMP,
+    sum INT NOT NULL,
+    nrProducts INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    CONSTRAINT onlyUsers
+        FOREIGN KEY(email) 
+        REFERENCES users(email)
+);
+
+DROP TABLE IF EXISTS product;
+CREATE TABLE IF NOT EXISTS product (
+    idNr INTEGER PRIMARY KEY AUTOINCREMENT,
+    time CURRENT_TIMESTAMP,
+    price INT,
+    name VARCHAR(255) NOT NULL,
+    UNIQUE(name)
+);

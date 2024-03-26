@@ -18,11 +18,14 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 8333;
 
+
 // Console.log('Running on port' +port);
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Check which mode is on (test/production)
+// Set environment to test / production
+process.env.NODE_ENV = 'test';
 console.log('PROCESS ENV: '+process.env.NODE_ENV);
 
 // Use sqlite database & run it
@@ -82,14 +85,12 @@ var token;
 // Require routes - routes that are stored in a catalog/directory
 // Use the main name with a subcatalog
 const index = require('./routes/index');
-// const hello = require('./routes/hello');
-// const reports= require('./routes/reports');
-const registry= require('./routes/registry');
+const registry = require('./routes/registry');
+const shop = require('./routes/shop');
 
 app.use('/', index);
-// app.use('/hello', hello);
-// app.use('/reports', reports);
 app.use('/users', registry);
+app.use('/shop', shop);
 
 
 // Get new token

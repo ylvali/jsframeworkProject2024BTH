@@ -22,7 +22,13 @@ The API provides & enables entrances to the system, interaction. That has certai
 In this sample you can 
 - register a user - connected to the sqlite database 
 - login a user    - connected to the sqlite database 
+- shop            - Sell / buy a product (sample with one product) 
+                    Products & funds in user's depot. 
+                    Add 1000 to depot. 
+
 This functionality uses jwt tokens, which is a unique token seemingly impossible to memorize used for identification. 
+It is a simple one-product sample which demonstrates possibilities to work this way with express & node.js.
+Creating a backend API that enables interaction through url routes. Can be fetched with for example AJAX. 
 
 ### SQLITE 3
 It runs a test database when in test mode ()
@@ -55,16 +61,40 @@ It runs a test database when in test mode ()
 ## Available routes 
 /                   : GET test 
 
+### Token 
+
 /token              : GET token 
 
 /verifyToken        : GET verifies token & uses JWT secret x-access-token
 
+### Users
+
 /users/allUsers     : POST Show all users 
 
-/users/register     : POST register user (email & password JSON, body)
+/users/register     : POST register user (body: email & password JSON, body)
 
 /users/allLoggedOn  : POST All logged on 
 
 /users/logOut       : POST Log out all 
 
-/users/login        : POST login user (username & password)
+/users/login        : POST login user (body: username & password)
+
+### Shop
+
+/shop/seeProduct    : POST (body: productName)
+
+/shop/checkDepot    : POST (body: email)
+
+/shop/addMoney      : POST (body: email default: 1000)
+
+/shop/addProduct    : POST (default: prodX & 1000)
+
+/shop/sellProduct   : POST (email, productName)
+
+/shop/buyProduct    : POST (email, productName)
+
+### Initiation 
+
+1. Register user 
+
+2. Add product 

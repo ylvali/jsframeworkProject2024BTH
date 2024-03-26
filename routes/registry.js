@@ -13,28 +13,12 @@ router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // Use database & run it
-// const sqlite3 = require('sqlite3').verbose();
-// const db = new sqlite3.Database('./db/tests.sqlite');
-// Use a testdb if in test mode
 const db = require("../db/database.js");
 // console.log(db);
-
 
 // Crypting passwords
 const bcrypt = require('bcryptjs');
 const saltRounds = 5; // The more rounds, the more difficult password
-
-/* Available routes
-/               - register a user
-/allUsers       - show all users
-/allLoggedOn    - show all logged on users
-/logOut         - Log out all
-/register       - register a user
-    (required: email & password | optional: name & birthday)
-/login          - login a user: email & password
-    (required: email & password
-*/
-
 
 // Show all users
 // Guide & inspiration:
@@ -115,10 +99,32 @@ router.post('/logOut', function(req, res) {
     });
 });
 
+// Register a new depot
+function newDepot(email) {
+    let theSql;
+    let params;
+
+    if (typeof email === 'string') {
+        console.log('Registering depot for user with email: '+email);
+        theSql = 'INSERT INTO depot (email, sum, nrProducts) VALUES (?, ?, ?)';
+        params = [email, 1000, 0];
+
+        db.all(theSql, params, (err, rows)=> {
+            if (err) {
+                console.log('Error: '+err.message);
+                return;
+            }
+            console.log(rows[0]);
+            console.log('Success');
+        });
+    }
+}
+
 // Take body params for user registration
 // email & password
 // Use password hashing
 // Save a user to the database
+// Add a new depot for the user
 router.post('/register', function(req, res) {
     console.log('Register a user');
     //console.log(req.body);
@@ -140,7 +146,7 @@ router.post('/register', function(req, res) {
 
     // Using password encryption
     bcrypt.hash(myPlainPassword, saltRounds, function(err, hash) {
-        // spara lösenord i databasen.
+        // Spara lösenord i databasen.
         console.log('Hash password created for the new user');
 
         // Database insertion of new user
@@ -153,6 +159,10 @@ router.post('/register', function(req, res) {
                 return;
             }
             console.log('Success: '+rows);
+
+            // Create depot
+            console.log('Creating new depot');
+            newDepot(req.body.email);
 
             const data = {
                 data: {

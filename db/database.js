@@ -9,5 +9,5 @@ module.exports = (function () {
     }
 
     console.log('Returning db texts');
-    return new sqlite3.Database('./db/texts.sqlite');
+    return new sqlite3.Database('./db/db1.sqlite');
 }());
