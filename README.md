@@ -36,8 +36,23 @@ It runs a test database when in test mode ()
 ## Install
 -- npm install 
 
-## Run server 
--- npm start , default on port 8333
+## Run server & chat server
+-- npm start , default on port 8333 (node app.js)
+-- npm run realtime, default on port 8334 (node socket.js)
+Can be run with packagemanager pm2. 
+
+The chat server is in the socket.js file. It runs with socket.io and uses realtime connection through sockets.
+The server runs on a port, and a client can listen. This server assimilates a realtime price microservice, and
+the new price is instantly updated realtime. The realtime server is connected to the same sqlite as the other server API (app.js)
+in this project. 
+
+## Tests
+-- npm test
+Runs the test files. The CI chain includes istanbul and mocha testing.
+It tests all the routes on the API. The code coverage through istanbul shows +70%. 
+Improvements could be to further test the values returned & to test with error values more. 
+In this scope within this time this is the set up.
+
 
 ## NPM commands
 "pretest": "bash start.bash",

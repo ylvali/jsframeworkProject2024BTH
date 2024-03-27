@@ -50,7 +50,7 @@ function availableSum(req, res, next) {
 
         db.all(theSql, params, (err, rows)=> {
             if (err) {
-                res.status(400).json({"error": err.message});
+                res.status(400).json({"msg": err.message});
                 console.log(err.message);
             }
             if (rows[0] !== undefined) {
@@ -89,7 +89,7 @@ function productPrice(req, res, next) {
 
         db.all(theSql, params, (err, rows)=> {
             if (err) {
-                res.status(400).json({"error": err.message});
+                res.status(400).json({"msg": err.message});
             }
             // console.log(rows);
 
@@ -115,7 +115,7 @@ function calculation(req, res, next) {
     console.log('Calculating purchase')
 
     if (!req.body.email) {
-        res.status(400).json({"error": 'no email'});
+        res.status(400).json({"msg": 'no email'});
         return;
     }
 
@@ -215,7 +215,7 @@ function addProduct(req, res) {
         db.all(theSql, params, (err, rows)=> {
             if (err) {
                 console.log(err.message)
-                res.status(400).json({"error": err.message});
+                res.status(400).json({"msg": err.message});
                 return;
             }
             console.log(rows);
@@ -251,7 +251,7 @@ function removeProduct(req, res) {
         db.all(theSql, params, (err, rows)=> {
             if (err) {
                 console.log(err.message)
-                res.status(400).json({"error": err.message});
+                res.status(400).json({"msg": err.message});
                 return;
             }
             console.log(rows);
@@ -308,7 +308,7 @@ router.post("/addProduct", (req, res) => {
         let aMsg = 'success';
 
         if (err) {
-            res.status(400).json({"error": err.message});
+            res.status(400).json({"msg": 'product already added or other error'});
             console.log(err.message);
             return;
         }
@@ -328,7 +328,7 @@ router.post("/addMoney", (req, res) => {
 
     // Checking incoming
     if (!req.body.email) {
-        res.status(400).json({"error": 'no email'});
+        res.status(400).json({"msg": 'no email'});
         return;
     }
 
@@ -340,7 +340,7 @@ router.post("/addMoney", (req, res) => {
         let aMsg = 'success';
 
         if (err) {
-            res.status(400).json({"error": err.message});
+            res.status(400).json({"msg": err.message});
             console.log(err.message);
             return;
         }
@@ -360,7 +360,7 @@ router.post("/checkDepot", (req, res) => {
 
     // Checking incoming
     if (!req.body.email) {
-        res.status(400).json({"error": 'no email'});
+        res.status(400).json({"msg": 'no email'});
         return;
     }
     // SQL and database update
@@ -369,7 +369,7 @@ router.post("/checkDepot", (req, res) => {
 
     db.all(theSql, params, (err, rows)=> {
         if (err) {
-            res.status(400).json({"error": err.message});
+            res.status(400).json({"msg": err.message});
             console.log(err.message);
             return;
         }
@@ -388,7 +388,7 @@ router.post("/seeProduct", (req, res) => {
 
     // Check incoming type
     if (!req.body.productName) {
-        res.status(400).json({"error": 'productName'});
+        res.status(400).json({"msg": 'productName'});
         return;
     }
     // SQL & parameters for database
@@ -398,7 +398,7 @@ router.post("/seeProduct", (req, res) => {
     // Database call
     db.all(theSql, params, (err, rows)=> {
         if (err) {
-            res.status(400).json({"error": err.message});
+            res.status(400).json({data:{"msg": 'no product or other error'}});
             console.log(err.message);
             return;
         }

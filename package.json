@@ -7,6 +7,9 @@
         "pretest": "bash start.bash",
         "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/**/*.js'",
         "start": "node app.js",
+        "realtime": "node socket.js",
+        "resetTestDb": "bash db/reset_test_db.bash",
+        "resetDb": "bash db/reset_db1.bash",
         "eslint": "eslint .",
         "clean": "rm -rf node_modules package-lock.json",
         "process": "pm2 start app.js --name me-api",
@@ -22,7 +25,9 @@
         "express": "^4.18.2",
         "jsonwebtoken": "^8.5.1",
         "morgan": "^1.10.0",
-        "sqlite3": "5.0.2"
+        "sqlite3": "5.0.2",
+        "socket.io": "^4.7.5",
+        "socket.io-client": "^4.7.5"
     },
     "devDependencies": {
         "chai": "^4.2.0",
