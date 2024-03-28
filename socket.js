@@ -95,43 +95,6 @@ function setNewPrice(newPrice) {
     return true;
 }
 
-// async function addMsg(msg) {
-//     try {
-//         let thedMsg = {comment: msg};
-//         let res = await addToCollection(dsn, "crowd", thedMsg);
-
-//         console.log(res);
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
-
-// /**
-//  * Add to collection : refactor from bth
-//  *
-//  * @async
-//  *
-//  * @param {string} dsn     DSN to connect to database.
-//  * @param {string} colName Name of collection.
-//  * @param {string} doc     Documents to be inserted into collection.
-//  *
-//  * @throws Error when database operation fails.
-//  *
-//  * @return {Promise<void>} Void
-//  */
-// async function addToCollection(dsn, colName, doc) {
-//     const client  = await mongo.connect(dsn);
-//     const db = await client.db();
-//     const col = await db.collection(colName);
-//     const result = await col.insertOne(doc);
-
-//     console.log(
-//         `A document was inserted with the _id: ${result.insertedId}`,
-//     );
-
-//     await client.close();
-// }
-
 server.listen(3001, () => {
     console.log('server running at http://localhost:3001');
 });

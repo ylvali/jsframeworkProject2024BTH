@@ -4,6 +4,8 @@
 
 [![Code Coverage](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/?branch=main)
 
+[![Build Status](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/badges/build.png?b=main)](https://scrutinizer-ci.com/g/ylvali/jsframeworkProject2024BTH/build-status/main)
+
 
 # Backend Me-API 
 ## BTH Blekinge technical institute
@@ -48,11 +50,17 @@ in this project.
 
 ## Tests
 -- npm test
-Runs the test files. The CI chain includes istanbul and mocha testing.
-It tests all the routes on the API. The code coverage through istanbul shows +70%. 
+Runs the test files. The CI chain includes istanbul, chai & mocha testing.
+It tests all the routes on the API. The code coverage through istanbul shows +80%. 
 Improvements could be to further test the values returned & to test with error values more. 
 In this scope within this time this is the set up.
+This is part of the development process, to see that the routes work properly. To see what params are necessary for backend calls for example.
+And to test the procedure that in this case is working with users and a shop situation. The actions made available throught the API can be tested. The whole process.
+And when something is changed in the script, run the tests again to see that the main points and functionality works as expected.
 
+It is also tested with travis & scrutinizer.
+
+Note: Socket.io functionality is briefly tested. Testing the connection and set up, in socket.io file.
 
 ## NPM commands
 "pretest": "bash start.bash",
