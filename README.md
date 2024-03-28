@@ -14,26 +14,28 @@
 ### Overview
 - Node.js Express Npm application 
 - Sqlite3 database
+- Socket.io realtime server 
 - Run environment: Nginx server (droplet online for example)
 
 ### Description
 Node.js & Express application 
-Using routes for creating a REST Api. 
-That can be uploaded on for example a droplet server and accessed online.
-The API provides & enables entrances to the system, interaction. That has certain effects.
+Using routes for creating a REST API. 
+That can be uploaded on for example a droplet server and accessed online or run locally.
+The API provides & enables entrances to the system, interaction. 
 In this sample you can 
-- register a user - connected to the sqlite database 
-- login a user    - connected to the sqlite database 
-- shop            - Sell / buy a product (sample with one product) 
-                    Products & funds in user's depot. 
-                    Add 1000 to depot. 
+- register a user       - connected to the sqlite database 
+- login a user          - connected to the sqlite database 
+- shop                  - Sell / buy a product (sample with one product) 
+                          Products & funds in user's depot. 
+                          Add 1000 to depot (default). 
+- set prices realtime   - real time micro service for updating product prices
 
-This functionality uses jwt tokens, which is a unique token seemingly impossible to memorize used for identification. 
-It is a simple one-product sample which demonstrates possibilities to work this way with express & node.js.
+It is a simple one-product sample. Which demonstrates possibilities to work this way with express & node.js.
 Creating a backend API that enables interaction through url routes. Can be fetched with for example AJAX. 
+Access with jwt secret access tokens.
 
 ### SQLITE 3
-It runs a test database when in test mode ()
+It runs with a sqlite3 database.
 
 ## Install
 -- npm install 
@@ -43,10 +45,10 @@ It runs a test database when in test mode ()
 -- npm run realtime, default on port 8334 (node socket.js)
 Can be run with packagemanager pm2. 
 
-The chat server is in the socket.js file. It runs with socket.io and uses realtime connection through sockets.
+The realtime server is in the socket.js file. It runs with socket.io (realtime connection).
 The server runs on a port, and a client can listen. This server assimilates a realtime price microservice, and
-the new price is instantly updated realtime. The realtime server is connected to the same sqlite as the other server API (app.js)
-in this project. 
+the new price is instantly updated. The realtime server is connected to the same sqlite as the other server for the register / product API (app.js)
+in this project (/db)
 
 ## Tests
 -- npm test
@@ -54,32 +56,28 @@ Runs the test files. The CI chain includes istanbul, chai & mocha testing.
 It tests all the routes on the API. The code coverage through istanbul shows +80%. 
 Improvements could be to further test the values returned & to test with error values more. 
 In this scope within this time this is the set up.
-This is part of the development process, to see that the routes work properly. To see what params are necessary for backend calls for example.
-And to test the procedure that in this case is working with users and a shop situation. The actions made available throught the API can be tested. The whole process.
-And when something is changed in the script, run the tests again to see that the main points and functionality works as expected.
+This is part of the development process, to see that the routes work properly with parameters. 
+And to test the procedure that in this case is working with users and a trade situation. Test the whole process of registry, login & trade.
+And when something is changed in the script, run the tests again to see that there are no errors. Great.
 
 It is also tested with travis & scrutinizer.
 
 Note: Socket.io functionality is briefly tested. Testing the connection and set up, in socket.io file.
 
 ## NPM commands
-"pretest": "bash start.bash",
+### Reset tests (database) and run tests (istanbul, mocha, chai)
+npm pretest
+npm test 
 
-"test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/**/*.js'",
+### install the application
+npm install 
 
-"start": "node app.js",
+### Run the application
+npm start
 
-"eslint": "eslint .",
+### Code validation
+npm run eslint
 
-"clean": "rm -rf node_modules package-lock.json",
-
-"process": "pm2 start app.js --name me-api",
-
-"stopProcess": "pm2 stop app.js --name me-api",
-
-"production": "NODE_ENV='production' node app.js",
-
-"testRun": "NODE_ENV='test' node app.js"
 
 ## Available routes 
 /                   : GET test 
@@ -115,6 +113,7 @@ Note: Socket.io functionality is briefly tested. Testing the connection and set 
 /shop/sellProduct   : POST (email, productName)
 
 /shop/buyProduct    : POST (email, productName)
+
 
 ### Initiation 
 
