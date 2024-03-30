@@ -95,6 +95,6 @@ function setNewPrice(newPrice) {
     return true;
 }
 
-server.listen(3001, () => {
-    console.log('server running at http://localhost:3001');
+server.listen(3005, () => {
+    console.log('server running at http://localhost:3005');
 });

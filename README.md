@@ -8,6 +8,8 @@
 
 
 # Backend Me-API 
+https://github.com/ylvali/jsframeworkProject2024BTH
+
 ## BTH Blekinge technical institute
 
 ## Application technology
@@ -28,7 +30,7 @@ In this sample you can
 - shop                  - Sell / buy a product (sample with one product) 
                           Products & funds in user's depot. 
                           Add 1000 to depot (default). 
-- set prices realtime   - real time micro service for updating product prices
+- set prices realtime   - Real time micro service for updating product prices
 
 It is a simple one-product sample. Which demonstrates possibilities to work this way with express & node.js.
 Creating a backend API that enables interaction through url routes. Can be fetched with for example AJAX. 

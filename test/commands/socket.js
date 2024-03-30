@@ -20,7 +20,7 @@ describe("test", () => {
     io = new Server(httpServer);
     httpServer.listen(() => {
       const port = httpServer.address().port;
-      clientSocket = ioc(`http://localhost:3001`);
+      clientSocket = ioc(`http://localhost:3005`);
       io.on("connection", (socket) => {
         serverSocket = socket;
       });
